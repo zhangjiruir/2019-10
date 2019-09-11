@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // console.log(a,b)
+    // let a = 12;
+    // const b = 13;
+    // let const 不存在变量提升
+    // 想用let const声明的变量 必须在声明的下方使用   
+    // 在上面使用 会有暂时性死区 的错误
+
+
+    // var  let  const  有什么区别
+    // var可以重复声明  let和const 不可以
+    // var存在变量提升  let和const 没有
+    // var声明的变量    会在window下增加一个对应的属性； let  const 不会
+    //  var 不识别块级作用域 let和const 可以
+
+
+    function f(){
+        console.log(a);
+        var a = 12;
+        console.log(a);
+    }
+    f();
+</script>
