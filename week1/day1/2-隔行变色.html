@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+     *{
+         margin: 0;
+         padding: 0;
+         list-style: none;
+     }
+     ul>li{
+         height: 50px;
+         line-height: 50px;
+     }
+     /* ul>li:nth-child(2n){
+         background: green
+     }
+     ul>li:nth-child(2n-1){
+         background: red
+     } */
+    </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>
+<script>
+    // var olis = document.getElementsByTagName('li');
+    var olis = document.querySelectorAll('ul>li');
+    for (var i = 0; i < olis.length; i++) {
+        //olis[i]  代表每一个li
+        olis[i].style.background = i%2 ? 'blue': 'red';
+        olis[i].myBg = olis[i].style.background;
+        olis[i].myIndex = i;
+        //olis[i].myBg = olis[i].style.background;
+        olis[i].onmouseenter = function () {
+            //鼠标进入
+            // this  当前操作的这个元素
+            
+            this.style.background = 'gold'
+        }
+        olis[i].onmouseleave = function () {
+            //鼠标离开
+            //想让颜色恢复
+            this.style.background = this.myBg
+        }
+        olis[i].onclick = function(){
+            alert(`这是第${this.myIndex+1}行 背景色是 ${this.myBg}`)
+        }
+    }
+    //点击 某一行值 弹出 这是第几行 背景色 是  xxx
+</script>
