@@ -5,7 +5,7 @@ function outer() {
     var n = 15;
 
     function inner(n) {
-        console.log(n)//15
+        console.log(n)//15   16
 
         function center() {
             n++;//16
@@ -24,7 +24,7 @@ function outer() {
     ++n;//21
 
     function inner() {
-        console.log(n++);//22
+        console.log(n++);//21
 
         function center() {
             n += 2;
@@ -41,7 +41,7 @@ console.log(n)//24
 
 //----------------------------------------------------
 alert(a);//undefined
-console.log("a" in window);//false
+console.log("a" in window);//true
 if (!("a" in window)) {
     var a = 10;
 }
@@ -96,13 +96,13 @@ var x = 0,
 function fn() {
     x += 2;
     fn = function (y) {
-        console.log(y + (--x));
+        console.log(y + (--x));//5
     };
-    console.log(x, y);
+    console.log(x, y);// 2 1
 }
 fn(3);
 fn(4);
-console.log(x, y);
+console.log(x, y); // 1 1 
 
 //=================================================
 function fn() {
@@ -112,10 +112,10 @@ function fn() {
     }
 }
 var f = fn();
-f(10);
-fn()(10);
-fn()(20);
-f(20);
+f(10);//40
+fn()(10);//40
+fn()(20);//80
+f(20);//60
 
 //==============================================
 var i = 2;
