@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+     /*
+       闭包
+       不销毁的作用域
+       是变量的一中保护机制，保护变量不受外界污染，保存某些值
+       简单的模块开发；
+       缺点 容易形成内存泄漏
+
+
+     */
+    // for(let i = 0;i < 10;i++){
+    //     setTimeout(()=>{
+    //         console.log(i)
+    //     },1000*(i+1))
+    // }
+
+    for (var i = 0; i < 10; i++) {
+            (function (i) {
+                setTimeout(() => {
+                    console.log(i)
+                }, 1000 * (i + 1))
+            })(i)
+        }
+</script>
