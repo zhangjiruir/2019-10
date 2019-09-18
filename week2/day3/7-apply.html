@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // apply 功能类似于 call
+    function fn(){
+        console.log([...arguments])
+        console.log(this)
+        console.log('============================')
+    }
+    var obj ={
+        a:12,
+        b:13
+    }
+    fn.call(obj,5,6,7,8)
+    fn.apply(obj,[5,6,7,8])//第二个参数是个 数组或者数组类的组的集合 虽然是以一个集合的形式传过去的，但是 fn 接收时还是散乱的接受的
+
+    // 实现一个 myapply 的方法  功能等同于 apply
+    Function.prototype.myApply = function myApply(context,arg) { // ... 剩余运算符
+        arg = arg || [];
+        context = context || window;
+        let a = Symbol(); // 产生一个唯一的不会重复的值
+        context[a] = this;
+        let res = context[a](...arg);
+        delete context[a];
+        return res;
+    }
+
+    fn.myApply(obj,[5,6,7,8]);
+</script>
