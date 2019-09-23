@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    /*
+        面向对象
+        面向过程  
+        单例   高级单例   工厂模式    构造函数模式  原型模式
+
+        每一个函数 都有一个天生自带的属性  prototype  指向自己的原型
+        每一个对象 都有一个天生自带的属性  __proto__  指向所属类的原型
+        每一个默认的原型对象 都有一个天生自带的属性 constructor 指向对应的构造函数本身
+
+        原型链： 属性的查找机制 现在自己身上查找对应的的属性  没有的话 就会__proto__ 查找所属类的原型
+
+        function  声明类
+        函数的三种角色  普通对象  构造函数   普通对象
+        Array.from()
+
+        class  类名{
+            constructor(){
+                函数体
+            }
+            say(){}
+            static fn(){}  ///  类名.fn = function(){}
+        }
+
+    */
+
+    // class Person{
+    //     constructor(name){
+    //         this.name = name
+    //     }
+    //     say(){
+    //         console.log(`my name is ${this.name}`)
+    //     }
+    //     static fn(){
+    //         console.log('静态属性')
+    //     }
+    //     static fn2(){
+    //         console.log('静态属性2')
+    //     }
+    //     static qqq = 123
+    // }
+    // var p = new Person('珠峰')
+    // class Child extends Person{
+    //     constructor(){
+    //         super();
+    //         this.name =name;
+    //     }
+    // }
+    // var c = new Child('小明')
+
+
+    // function Man(){}
+    
+
+    // function boy(){
+    //     Man.call(this)
+    // }
+    // boy.prototype = Object.create(Man.prototype)
+    
+
+    // // 在数组的原型上补一个方法 del(n)  可以随机删除n项；返回值是 删除的项 组成的新数组
+    
+    // Array.prototype.del = function(n){
+    //     if(n > this.length){
+    //         throw new Error('参数错误')
+    //     }
+    //     var ary = [];
+    //     for(var i = 0; i<n;i++){
+    //         var m = Math.round(Math.random()*(this.length-1));
+    //         ary = ary.concat(this.splice(m,1))
+    //     }
+    //     return ary;
+    // }
+    // var ary = [1,2,3,4,5,6]
+    // console.log(ary.del(2))// 随机删除两项 
+
+    // 在字符串的原型上 补一个方法 url.getParam(url)  该方法 可以获取 url 上的参数及部分人你 hash 的部分内容
+    String.prototype.getParam = function(){
+        let obj = {};
+        this.split('?')[1].split('#')[0].split('&').forEach(item=>{
+            let ary = item.split('=');
+            obj[ary[0]]=ary[1]
+        })
+        obj.hash = this.split('#')[1]
+        return obj
+    }
+    var str = 'https://baidu.com?a=12&bb=13&_c=14V#hello';
+    str.getParam()// {a:12;bb:13,_c:13,hash:'hello'}
+</script>
