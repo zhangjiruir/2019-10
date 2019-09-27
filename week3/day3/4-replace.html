@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="inp">
+</body>
+</html>
+<script>
+    // replace 替换
+    '2019-02-03'.replace('-','/').replace('-','/')
+    var res = '2019-02-03'.replace(/-/g,'/');
+    console.log(res)
+
+    var str = 'sdef121efzfsgd12ryzfcsd2131fdgsdzsd'
+    var res = str.replace(/\d+/g,'/')
+    console.log(res)
+
+    var str = ' sfsf  sfsfssve '
+    // 使用正则 删去字符串首尾空格
+    // 以 1 到多个空格开头或结尾的 都替换成 空
+    var res = str.replace(/^ *| *$/g,'')
+    console.log(res)
+
+    inp.oninput = function (){
+        console.log(this);
+        let str = this.value;
+        var res = str.replace(/^ +/g,'');
+        this.value = res;
+    }
+
+    var str = 'afafaAXCXFc'
+    var reg = /[A-Z]/g
+    // var res = str.replace(reg,function($1){
+    //     console.log($1)
+    //     return $1.toLowerCase()
+    // })
+    // console.log(res)
+
+    var reg =/[A-Za-z]/g;
+    var res=str.replace(reg,function($1){
+        if($1.toLowerCase()==$1){
+            return $1.toUpperCase();
+        }else{
+            return $1.toLowerCase();
+        }
+        return $1.toLowerCase();
+    })
+    console.log(res)
+
+
+
+    var str2 = '';
+    for(var i = 0; i < str.length ; i++){
+        let a = str[i];
+        if(a.toLowerCase() == a){
+            // 说明变量a对应的字符是一个小写字母
+            str2 += a.toUpperCase();
+        }else{
+            str2 += a.toUpperCase();
+        }
+    }
+    console.log(str,str2)
+
+
+
+    var str = 'zf2019zf2020';
+    var res = str.replace(/([a-z]+)(\d+)/g,function(){
+        // replace  的回调函数的实参结果 跟 match和exec获取的 类似
+        // 返回的字符串 是由匹配到的内容被return值 替换之后的新字符串
+        // 回调函数的执行次数跟 正则匹配到的次数一样
+        console.log(arguments)
+    })
+
+
+    
+</script>
