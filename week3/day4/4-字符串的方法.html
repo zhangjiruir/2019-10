@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // match
+    var reg = /\d+/g;
+    var str = 'zf2019zf2020';
+    str.match(reg)// 正则有g只捕获大正则，没g跟exec结果类似
+
+    function getParam(url){
+        var reg = /([^=?&]+)=([^=?&]+)/g;
+        var ary = url.match(reg);
+        var obj = {};
+        ary.forEach(item => {
+            let a = item.split('=');
+            obj[a[0]] = a[1]
+        });
+        return obj
+    }
+
+
+    // split()
+    var str = '28zcasdzs6fa974542';
+    str.match(/\d+/g);
+    str.split(/\D+/)
+
+
+
+    // replace
+    function getParam(url){
+        var reg = /([^=?&]+)=([^=?&]+)/g;
+        var obj = {};
+        url.replace(reg,function(a,b,c){
+            obj[b] = c
+        })
+        return obj
+    }
+</script>

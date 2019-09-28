@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // 一个字符串中出现次数最多的字符
+    var str = 'ghjgjgdzcjjkhxdgzghgfdamytxdcvbn';
+    function getMax(str){
+        let obj = {};
+        for(let i = 0; i<str.length; i++){
+            // 把字符串中的每一项都当作属性名储存起来
+            // 储存之前 先看 对象中有没有这个属性，没有的话 我们就给 obj
+            // 增加一个对应的属性 属性值是 1 ；有的话 就在他现在值的基础上加 1
+            let t = str[i];
+            if(obj.hasOwnProperty(t)){
+                obj[t] += 1;
+            }else{
+                obj[t] = 1;
+            }
+        }
+        console.log(obj)
+        var val = Object.values(obj);
+        var key = Object.keys(obj);
+        var m = Math.max(...val);
+        var n = key[val.indexOf(m)]
+        // let key = '',num = 0;
+        // for(var k in obj){
+        //     if(obj[k]>num){
+        //         key = k;
+        //         num = obj[k]
+        //     }
+        // }
+        return{
+            n,m
+        }
+    }
+    getMax(str)
+
+    var str = 'ghjgjgdzcjjkhxdgzghgfdamytxdcvbn';
+    function getMax2(str){
+        str = str.split('').sort().join('');
+        let reg = /(\w)\1*/g;
+        var ary = str.match(reg);
+        ary.sort((a,b)=>{
+            return b.length - a.length
+        })
+        return{
+            key:ary[0][0],
+            val:ary[0].length
+        }
+    }
+    getMax2(str)
+
+
+      // 2.大小写反转
+      var str = 'HeLLo WorLD';
+      function turn(str){
+        //   return str.replace(/\w/g,function(a){
+        //       return a.toLowerCase() == a ? a.toUpperCase() : a.toLowerCase()
+        //   })
+        var n = 0;
+        var reg = /([A-Z]*)([a-z]*)/g;
+        return str.replace(reg,function(a,b,c){
+            console.log(a,b,c)
+            return b.toLowerCase() + c.toUpperCase()
+        })
+      }
+      turn(str)
+
+      // 3.小写数字转大写
+      var str = '今年是2017年'; //
+      var ary = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖', '拾'];
+      str.replace(/\d/g,function(n){
+          return ary[n]
+      })
+
+
+      // 4.模板引擎
+     // 4、模板引擎
+   // 4. 模板引擎
+//    var str = '姓名是：{{name}}, 年龄是：{{age}}, 性别是{{sex}}';
+//     var data = {
+//         name:"小明",
+//         age:10,
+//         sex:"男"
+//     }
+//     function formate(str,data){
+//         let reg = /\{\{(\w+)\}\}/g;
+//         return str.replace(reg,function(a,b){
+//             return data[b]
+//         })
+//     }
+
+//     formate()
+
+    // 5.千分符的实现
+    function formateMoney(str){
+        str = str.split('').reverse().join('');
+        let s = '';
+        for(let i = 0 ; i < str.length; i++){
+            if(i%3==2){
+                s += str[i]+','
+            }else{
+                s += str[i]
+            }
+        }
+        s = s.split('').reverse().join('');
+        return s.replace(/^,/,'');
+    }
+    var str = '123456';
+
+    function formateMoney2(str){
+        // var reg = /(\d{1,3})(?=(\d{3})+$)/;
+        // return str.replace(reg,'$1,')
+        var reg = /\d{1,3}(?=(\d{3})+$)/;
+        return str.replace(reg,function(a){
+            return a+','
+        })
+    }
+
+</script>
