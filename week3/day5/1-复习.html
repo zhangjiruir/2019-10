@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    /*
+        正则： 匹配 test   捕获exec
+            字面量   var reg = /q/g
+            构造函数 var reg = new RegExp('q','g')
+        特殊元字符
+        \       转义
+        \d      0-9之间的数字
+        \D      取反\d
+        \w      数字 字母 下划线
+        \W      取反\w
+        .       除了换行符之外的字符
+        \n      换行
+        ^       以什么开头
+        $       以什么结尾
+        [ab]    a或b
+        [^ab]   非ab
+        [a-z]   a到z
+        x|y     x或y
+        ()      分组和提升优先级
+        (?:)    只匹配 不捕获
+        (?=)    正向肯定预查
+        (?!)    正向否定预查
+
+
+        量词元字符
+            ?       出现0到1ci
+            +       出现1到多次
+            *       出现0到多次
+            {n}     出现n次
+            {n,m}   出现n到m次
+            {n,}    至少出现n次
+
+
+        修饰符
+            i       忽略大小写
+            m       多行匹配
+            g       全局匹配
+
+    */
+
+    // 捕获 把字符串中符合正则的部分获取到
+    
+
+
+    // 字符串中的方法  match  split  replace
+
+
+    let url = 'http://www.zhufengpeixun.cn/?lx=1&from=wx&b=12&c=13';
+    function getParam(url){
+        var reg = /([^=?&#]+)=([^=?&#]+)/g;
+        var ary = url.match(reg);
+        var obj = {};
+        ary.forEach(item => {
+            let a = item.split('=');
+            obj[a[0]] = a[1]
+        });
+        return obj
+    }
+
+    // split
+    
+</script>
