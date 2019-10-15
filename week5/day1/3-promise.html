@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script src="./jquery-3.3.1.js"></script>
+<script>
+    // $.ajax({
+    //     url:'./data.json',
+    //     success:function(data){
+    //         $.ajax({
+    //             url: './data.json',
+    //             success: function (data) {
+
+    //             }
+    //         })
+    //     }
+    // })
+
+    // executor
+    // Promise 实例有三个状态 分别是 pending resolved rejected
+    //           pending 代表当前的promise还是处于 等待状态
+    //           resolved 代表当前走了成功对应的回调函数
+    //           rejected 代表当前走了失败对应的回调函数
+    //           状态已经修改就不会在发生任何改变
+
+
+    // let p = new Promise(function(resolve,reject){
+    //     // resolve 是执行成功对应的回调函数
+    //     // reject  是执行失败对应的回调函数
+    //     // 具体是执行成功还是失败 是由 书写executor函数的这个人决定的
+    //     setTimeout(()=>{
+    //         reject(123)
+    //         resolve(123)
+    //     },3000)
+    // });
+    // // console.log(p)
+    // // then 接受两个函数作为参数 第一个函数对应 resolve 第二个函数对应 reject
+    // p.then(function(data){
+    //     console.log('success')
+    //     console.log(data)
+    // },function(err){
+    //     console.log('error')
+    //     console.log(err)
+    // })
+
+    let p = new Promise(function(res,rej){
+        $.ajax({
+            url:'./data2.json',
+            success:res,
+            error:function(data){
+                console.log(data)
+                res(data)
+            },
+            // error:rej
+        })
+    })
+    p.then(function(data){
+        // then 可以写两个参数 也可以只写 一个参数，对应的是成功的回调  失败信息我们可以通过catch捕获
+        console.log(data)
+        return 6666
+    }).then(function(data2){
+        console.log(data2)
+    }).catch(function(err){
+        console.log(err)
+    })
+</script>
