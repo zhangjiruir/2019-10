@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .litImg{
+            width: 300px;
+            height: 200px;
+            display: block;
+            margin: 50px;
+            border: 1px solid salmon;
+        }
+        .bigImg{
+            width: 600px;
+            height: 400px;
+            display: none;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="litImgBox">
+        <img src="http://img0.imgtn.bdimg.com/it/u=1297174142,2131457272&fm=26&gp=0.jpg" alt="" class="litImg">
+
+        <img src="http://n.sinaimg.cn/translate/20170411/yaXE-fyecezv3149561.jpg" alt="" class="litImg">
+    </div>
+    <div class="bigImgBox">
+            <img src="http://img0.imgtn.bdimg.com/it/u=1297174142,2131457272&fm=26&gp=0.jpg" alt="" class="bigImg">
+
+            <img src="http://n.sinaimg.cn/translate/20170411/yaXE-fyecezv3149561.jpg" alt="" class="bigImg">
+    </div>
+</body>
+</html>
+<script>
+    var litImgs = document.getElementsByClassName('litImg');
+    var bigImgs = document.getElementsByClassName('bigImg');
+    for(let i =0; i < litImgs.length; i++){
+        litImgs[i].onmouseenter = function(){
+            bigImgs[i].style.display = 'block';
+            litImgs[i].onmousemove = function (e) {
+            let { pageX, pageY } = e;
+            bigImgs[i].style.top = pageY + 'px'
+            bigImgs[i].style.left = pageX + 'px'
+        }
+        }
+        
+        litImgs[i].onmouseleave = function(){
+            bigImgs[i].style.display = 'none';
+            //litImgs[i].onmouseleave = null;
+    }
+    }
+    
+</script>
