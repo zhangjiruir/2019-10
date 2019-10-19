@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,56 +21,64 @@
     </style>
 </head>
 <body>
-    <input type="file" id="inp">
-    <div id="lit_box" draggable="true"></div>
-    <div id="big_box"></div>
+    <input type="file" id='inp'>
+    <div id="lit_box" draggable="true">
+
+    </div>
+    <div id="big_box">
+
+    </div>
 </body>
 </html>
 <script>
-    // inp.oninput = function(e){
-    //     console.log(e.target.files[0])
-    //     let file = e.target.files[0];
-    //     let url = url.createObjectURL(file);
-    //     big_box.innerHTML += `<img src = "${url}">`
-    // }
+    /* // 原生的上传
+    inp.oninput = function (e) {
+        console.log(e.target.files[0])
+        let file = e.target.files[0];
+        let url = URL.createObjectURL(file);
+        big_box.innerHTML += `<img src="${url}"/>`
+    } */
     var litBox = document.getElementById('lit_box'),
         bigBox = document.getElementById('big_box');
     litBox.ondragstart = function(e){
         console.log('start',e)
-    }
-    litBox.ondrag = function(e){
+    }    
+    litBox.ondrag = function (e) {
         console.log('拖动中')
     }
     litBox.ondragend = function(e){
         console.log('end',e)
     }
 
-    bigBox.ondragenter = function(){
+
+    bigBox.ondragenter = function () {
         console.log('拖进来')
     }
     bigBox.ondragover = function(e){
-        console.log('拖上来')
+        console.log('拖上来');
         e.preventDefault();
     }
-    bigBox.ondragleave = function(){
-        console.log('离开')
+    bigBox.ondragleave = function () {
+        console.log('离开');
     }
     bigBox.ondrop = function(e){
-        // 需要配合 over 使用  需要阻止默认事件5
-        e.preventDefault();
+        // 需要与over配合使用； 需要over阻止默认事件
+        e.preventDefault();// 阻止默认打开图片
         console.log(e.dataTransfer.files[0]);
         let file = e.dataTransfer.files[0];
-        let url = URL.createObjectURL(file)//产生对应文件的路径
-        console.log(url)
-        this.innerHTML = `<img src = ${url}>`
-
+        let url = URL.createObjectURL(file);// 产生对应文件的路径
+        console.log(file)
+        this.innerHTML = `<img src = "${url}" />`;
+        
         /* let _this = this;
         let res = new FileReader();
         res.readAsDataURL(file);
         res.onload = function(e){
             console.log(e)
-            _this.innerHTML = `<img src = "${e.target.result}">`
-
+            // _this.innerHTML = `<img src = "${e.target.result}" />`;
+            _this.innerText = e.target.result
         } */
+        
     }
+
 </script>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,27 +12,26 @@
 </body>
 </html>
 <script>
-    // 订阅的时候 把名字加入 订阅者清单
-    // 发布时 按照名字去送期刊
+    // 订阅 的 时候 把名字加入到订阅者清单
+    // 发布时  按照清单去送期刊
 
-    var ary = [];// 订阅者清单   事件池
+    var ary = [];// 订阅者清单    // 事件池
 
-    function on(f){
-        // 订阅函数 把对应的事件 放到清单里面
+    function on (f){
+        // 订阅函数  把对应的事件放到 清单里边
         ary.push(f);
-
     }
 
     function fire(n){
         ary.forEach((f)=>{
-            f();
+            f.call(this,...arguments);
         })
     }
-
+    
     function off(f){
         // 取消订阅
-        let n  = ary.indexOf(f);
-        
+        let n = ary.indexOf(f);
+        ary.splice(n,1);
     }
 
     function f1(){
@@ -48,5 +48,6 @@
     on(f3);
 
     fire(666);
+    off(f2);
     btn.onclick = fire
 </script>
