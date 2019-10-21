@@ -26,7 +26,59 @@
     display: inline-block;
     
 }
+.aimg{
+    position: absolute;
+}
+.lit .desc_box{
+    width: 508px;
+    height: 70px;
+    position: relative;
+    left: 156px;
+    top: 27px;
+}
+.lit .desc_box li{
+    color: #fff;
+    float: left;
+    margin-left:38px;
+    font-size: 14px; 
+}
+.lit .srchbg{
+    margin-top: -52px;
+    background-color: #fff;
+    border-radius: 30px;
+    width: 158px;
+    height: 32px;
+    font-size: 12px;
+    color: #333;
+    line-height: 32px;
+    text-align: center;
+    margin-left:760px;
+}
 
+.lit .srchbg2{
+    margin-top: -32px;
+    background-color: #fff;
+    border-radius: 30px;
+    width: 89px;
+    height: 32px;
+    font-size: 12px;
+    color: #ccc;
+    line-height: 30px;
+    text-align: center;
+    margin-left:932px;
+}
+.lit .srchbg3{
+    margin-top: -32px;
+    background-color: #fff;
+    border-radius: 30px;
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+    color: #ccc;
+    line-height: 30px;
+    text-align: center;
+    margin-left:1044px;
+}
 
 /* 头二 */
 .b_box{
@@ -36,3 +88,19 @@
     border-bottom: 1px solid #a40011;
     position: relative;
 }
+.b_box .desc_2box{
+    position: relative;
+    left: 375px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+}
+.b_box .desc_2box li{
+    color: #fff;
+    float: left;
+    margin-left:52px;
+    font-size: 12px; 
+}
+
+
+/* 轮播图 */
