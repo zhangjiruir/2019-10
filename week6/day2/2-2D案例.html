@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box {
+            width: 650px;
+            height: 434px;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .big_box li {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 650px;
+            height: 434px;
+            display: none;
+        }
+
+        .big_box li:nth-child(1) {
+            /* display: block; */
+        }
+
+        .big_box li:target {
+            display: block;
+            animation: jackInTheBox 1s linear;
+        }
+
+        .lit_box {
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            height: 80px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.5);
+            padding-top: 5px;
+            box-sizing: border-box;
+        }
+
+        .lit_box li {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 10px solid rgba(0, 0, 0, 0.6);
+            /* box-sizing: border-box; */
+        }
+
+        @keyframes move1 {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1) rotate(360deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceIn {
+
+            from,
+            20%,
+            40%,
+            60%,
+            80%,
+            to {
+                -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+                animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            }
+
+            0% {
+                opacity: 0;
+                -webkit-transform: scale3d(0.3, 0.3, 0.3);
+                transform: scale3d(0.3, 0.3, 0.3);
+            }
+
+            20% {
+                -webkit-transform: scale3d(1.1, 1.1, 1.1);
+                transform: scale3d(1.1, 1.1, 1.1);
+            }
+
+            40% {
+                -webkit-transform: scale3d(0.9, 0.9, 0.9);
+                transform: scale3d(0.9, 0.9, 0.9);
+            }
+
+            60% {
+                opacity: 1;
+                -webkit-transform: scale3d(1.03, 1.03, 1.03);
+                transform: scale3d(1.03, 1.03, 1.03);
+            }
+
+            80% {
+                -webkit-transform: scale3d(0.97, 0.97, 0.97);
+                transform: scale3d(0.97, 0.97, 0.97);
+            }
+
+            to {
+                opacity: 1;
+                -webkit-transform: scale3d(1, 1, 1);
+                transform: scale3d(1, 1, 1);
+            }
+        }
+
+        @-webkit-keyframes jackInTheBox {
+            from {
+                opacity: 0;
+                -webkit-transform: scale(0.1) rotate(30deg);
+                transform: scale(0.1) rotate(30deg);
+                -webkit-transform-origin: center bottom;
+                transform-origin: center bottom;
+            }
+
+            50% {
+                -webkit-transform: rotate(-10deg);
+                transform: rotate(-10deg);
+            }
+
+            70% {
+                -webkit-transform: rotate(3deg);
+                transform: rotate(3deg);
+            }
+
+            to {
+                opacity: 1;
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul class="big_box">
+            <li id="img1">
+                <img src="http://n.sinaimg.cn/sinacn15/799/w960h639/20180703/7be8-hevauxi6132958.jpg" alt="">
+            </li>
+            <li id="img2">
+                <img src="http://img.mp.itc.cn/upload/20160920/265ca5d1eba146e49221bcd79198aeca_th.jpg" alt="">
+            </li>
+            <li id="img3">
+                <img src="http://5b0988e595225.cdn.sohucs.com/images/20171222/623977a44969484a86e849c6f0b6cfd9.jpeg"
+                    alt="">
+            </li>
+            <li id="img4">
+                <img src="http://n.sinaimg.cn/sinacn/w1024h655/20171222/fa58-fypvuqf1081861.jpg" alt="">
+            </li>
+        </ul>
+        <ul class="lit_box">
+            <li>
+                <a href="#img1">
+                    <img src="http://n.sinaimg.cn/sinacn15/799/w960h639/20180703/7be8-hevauxi6132958.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="#img2">
+                    <img src="http://img.mp.itc.cn/upload/20160920/265ca5d1eba146e49221bcd79198aeca_th.jpg" alt="">
+                </a>
+            </li>
+            <li><a href="#img3">
+                    <img src="http://5b0988e595225.cdn.sohucs.com/images/20171222/623977a44969484a86e849c6f0b6cfd9.jpeg"
+                        alt="">
+                </a></li>
+            <li>
+                <a href="#img4">
+                    <img src="http://n.sinaimg.cn/sinacn/w1024h655/20171222/fa58-fypvuqf1081861.jpg" alt="">
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
