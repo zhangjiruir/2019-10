@@ -90,15 +90,18 @@
     position: relative;
 }
 .b_box .desc_2box{
-    position: relative;
-    left: 375px;
+    position: absolute;
     height: 35px;
     line-height: 35px;
     text-align: center;
+    left: 375px;
+}
+.b_box .desc_2box li{
+    float: left;
+
 }
 .b_box .desc_2box a{
     color: #fff;
-    float: left;
     margin-left:52px;
     font-size: 12px; 
     text-decoration: none;
@@ -158,9 +161,8 @@
 }
 .btn_box{
     position: absolute;
-    top:50%;
+    top:40%;
     transform: translateY(-50%);
-    overflow: hidden;
     width: 100%;
 }
 .btn_box div{
@@ -168,16 +170,18 @@
     height: 100px;
     line-height: 100px;
     text-align: center;
-    color: #fff;
+    color: #242424;
     font-size: 80px;
     cursor: pointer;
     user-select: none;
 }
 .left_btn{
-    float: left;
+    position: absolute;
+    right: 730px;
 }
 .right_btn{
-    float: right;
+    position: absolute;
+    left: 990px;
 }
 .second_banner{
     float: right;
