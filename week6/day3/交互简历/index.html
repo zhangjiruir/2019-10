@@ -22,21 +22,107 @@
         <div class="progressBox">
                 <div class="progress"></div>
         </div>
+        <div id="btn" class="hide">进入H5</div>
     </section>
     <section class="phoneBox ">
         <header>
             <h1>珠峰培训</h1>
             <h2>www.zhufengpeixun.com</h2>
-            <h3>00:00</h3>
+            <h3 class="hide">00:00</h3>
         </header>
         <footer>
            <div class="circle"></div>
         </footer>
         <div class="overBox bot">
-
+            <div class="overBtn"></div>
         </div>
     </section>
-    <section class="chatBox"></section>
+    <section class="chatBox">
+        <ul class="chatMsgBox">
+            <li class="opa">
+                <div class="imgBox">
+                    <img src="./images/message-head1.png" alt="">
+                </div>
+                <div class="msg">
+                    面试官你好，我是练习时长两年半的偶像练习生蔡徐坤！
+                </div>
+            </li>
+            <li class="right opa">
+                <div class="imgBox">
+                    <img src="./images/message-head2.png" alt="">
+                </div>
+                <div class="msg">
+                    哇塞！好牛X啊！介绍一下自己的专业技能吧！
+                </div>
+            </li>
+            <li class="opa">
+                <div class="imgBox">
+                    <img src="./images/message-head1.png" alt="">
+                </div>
+                <div class="msg">
+                    我喜欢唱跳rap篮球，爱吃烤山药
+                </div>
+            </li>
+            <li class="right opa">
+                <div class="imgBox">
+                    <img src="./images/message-head2.png" alt="">
+                </div>
+                <div class="msg">
+                    吃两块，吃大块的
+                </div>
+            </li>
+            <li class="opa">
+                <div class="imgBox">
+                    <img src="./images/message-head1.png" alt="">
+                </div>
+                <div class="msg">
+                    接下来请欣赏我的表演，离不开你
+                </div>
+            </li>
+            <li class="right opa">
+                <div class="imgBox">
+                    <img src="./images/message-head2.png" alt="">
+                </div>
+                <div class="msg">
+                    停停停，跟我唱，掀起~波澜
+                </div>
+            </li>
+            <li class="opa">
+                <div class="imgBox">
+                    <img src="./images/message-head1.png" alt="">
+                </div>
+                <div class="msg">
+                    掀起~波~澜
+                </div>
+            </li>
+            <li class="right opa">
+                <div class="imgBox">
+                    <img src="./images/message-head2.png" alt="">
+                </div>
+                <div class="msg">
+                    滚
+                </div>
+            </li>
+        </ul>
+        <div class="keyboard bot">
+            <p></p>
+            <div class="chatBtn hide"></div>
+        </div>
+    </section>
+    <audio src="./audio/bell.mp3" preload="metadata"  id="bell"></audio>
+    <audio src="./audio/say.mp3" preload="metadata" id="say"></audio>
+    <audio src="./audio/music.mp3" preload="metadata" loop='true' id="bgm"></audio>
+    <!-- 
+        preload:
+            none 不遇加载
+            auto 预加载
+            metadata 预加载元数据
+        autoplay 自动播放
+        loop  循环播放0
+
+        bell.play() 自带播放
+        bell.pause() 暂停
+     -->
 </body>
 </html>
 <script src="./js/index.js"></script>

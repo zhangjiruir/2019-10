@@ -1,124 +1,100 @@
-// var banner = (function(){
-//     let idSelector = '';
-//     let $box = null,
-//         $ul = null,
-//         $lis = null,
-//         $tipBox = null,
-//         $tips = null,
-//         $leftBtn = null,
-//         $rightBtn = null;
-//     var n = 0, timer = null; // n 控制了全局图片对应的索引   
-//     function throttle(fn,wait=500){
-//         let flag = true;
-//         return function(){
-//             if(!flag)return;
-//             flag = false;
-//             setTimeout(() => {
-//                 flag = true;
-//                 fn.apply(this,arguments)
-//             }, wait);
-//         }
-//     }
-//     function initEle(){
-//         $box = $(idSelector);
-//         $ul = $box.find('.img_box ul'),
-//         $lis = $box.find('.img_box ul li'),
-//         $tipBox = $box.find('.tip_box'),
-//         $tips = $tipBox.children('.tip'),
-//         $leftBtn = $box.find('.left_btn'),
-//         $rightBtn = $box.find('.right_btn');
+let $box = $('.first_banner'),
+    //$ul = $('#box.img_box ul'),
+    //$ul = $box.children('.img_box').children('ul');
+    $ul = $box.find('ul'),
+    $tipBox = $box.find('.tip_box'),
+    $tip = $tipBox.children('.tip'),
+    $leftBtn = $box.find('.left_btn'),
+    $rightBtn = $box.find('.right_btn');
+let n = 0, timer = null
 
-//         $lis.eq(0).show().siblings().hide();
-//     }
-//     function getData(){
-//         $.ajax({
-//             url:'./data.json',
-//             success:function(data){
-//                 //
-//                 render(data);
-//                 initEle();
-//                 autoMove();
-//                 eventBind();
-//             },
-//             error:function(){
-//                 alert('失败')
-//             }
-//         })
-//     }
-//     function render(data){
-//         let str = '',tipStr = '';
-//         data.forEach((item,index)=>{
-//             str += `<li>
-//                 <img src="${item.img}" alt="">
-//             </li>`;
-//             tipStr += (index ==0 ? `<span class="tip current"></span> `:`<span class="tip"></span> `)
-//         })
-//         $ul.html(str)
-//         $tipBox.html(tipStr);
-//     }
-//     function move(){
-//         n++;
-//         if(n > $lis.length-1){
-//             n = 0;
-//         }
-//         $lis.eq(n).show().css({opacity:0}).animate({opacity:1},300).siblings().animate({opacity:0},300,function(){
-//             $lis.eq(n).siblings().hide();
-//         })
-//         autoFocus();
-//     }
-//     function autoMove(){
-//         timer = setInterval(()=>{
-//             move();
-//         },2000)
-//     }
-//     function autoFocus(){
-//         $tips.eq(n).addClass('current').siblings().removeClass('current');
-//     }
-//     function eventBind(){
-//         $box.on('mouseenter',function(){
-//             clearInterval(timer);
-//         })
-//         $box.on('mouseleave',function(){
-//             autoMove();
-//         })
-//         $leftBtn.on('click',throttle(function(){
-//             n--;
-//             if(n < 0){
-//                 n = $lis.length-1; 
-//             }
 
-//             n--;
-//             move();
-//         }))
-//         $rightBtn.on('click',throttle(function(){
-//             move();
-//         }))
-//         $tips.on('click',function(){
-//             let index = $(this).index();
-//             n = index;
-            
-//             n--;
-//             move();
-//         })
-//     }
-//     return {
-//         init(){
-//             idSelector = '#'+this.attr('id');
-//             getData();
-//             initEle();
-//         }
-//     }
-// })()
-// // banner.init('#box');
-// $.extend({
-//     qqq(){
-//         consolelog(666)
-//     }
-// })
-// $.fn.extend({
-//     aaa(){
-//         console.log(999)
-//     },
-//     bannerInit:banner.init
-// })
-// $('#box').bannerInit()
+function getData() {
+    // 获取数据
+    $.ajax({
+        type: 'get',
+        url: './data.json',
+        success: function (data) {
+            render(data)
+            tipClick();
+        },
+        erroer: function () {
+            console.log('失败')
+        }
+    })
+}
+getData();
+function render(data) {
+    let str = '';
+    let $tipStr = '';
+    data.push(data[0]);
+    data.forEach((item, index) => {
+        str += `<li>
+        <img src="${item.img}" alt="">
+    </li>`
+        if (index == 0) {
+            $tipStr += `<span class="tip current"></span> `
+        } else if (index < data.length - 1) {
+            $tipStr += `<span class="tip"></span> `
+        }
+    });
+    
+    $ul.html(str);
+    $ul.width(730*data.length)
+    $tipBox.html($tipStr)
+    $tips = $tipBox.children('.tip')
+}
+
+
+function move() {
+    n++;
+    if(n > $tips.length){
+      
+        $ul.css('left',0);
+        n = 1;
+    }
+    $ul.animate({ left: -730* n }, 300);
+    autoFocus(n);
+}
+function autoMove() {
+    timer = setInterval(() => {
+        move()
+    }, 2000);
+}
+autoMove()
+
+
+function autoFocus(m){
+    if(m >= $tips.length){
+        m = 0;
+    }
+    $tips.eq(m).addClass('current').siblings().removeClass('current')
+}
+$box.on('mouseenter',function(){
+    clearInterval(timer);
+})
+$box.on('mouseleave',function(){
+    autoMove()
+})
+$leftBtn.on('click',function(){
+    n--;
+    if(n < 0){
+        $ul.css({left:-$tips.length*730});
+        n = $tips.length-1;
+    }
+    $ul.animate({left:-n*730},200);
+    autoFocus(n)
+})
+$rightBtn.on('click',function(){
+    move()
+})
+function tipClick(){
+    $tips.on('click',function(){
+        console.log($(this).index())
+        let m = $(this).index();
+        n=m;
+        $ul.animate({left:-730*m},500);
+        autoFocus(m);
+    })
+}
+
