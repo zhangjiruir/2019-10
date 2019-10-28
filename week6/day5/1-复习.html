@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* #box{
+            width: 200px;
+            height: 200px;
+            background: red;
+            transform: skew(45deg);
+        } */
+        @keyframes qqq{
+            0%{
+                transform:rotate(0deg);
+            }
+            100%{
+                transform:rotate(360deg)
+            }
+        }
+
+        
+        #box {
+            margin: auto;
+            width: 400px;
+            perspective: 200px;
+        }
+
+        ul {
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        li {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            left: 0;
+            top: 0;
+            background: rgb(0, 174, 255);
+        }
+
+        li:nth-child(2) {
+            transform: rotate(90deg);
+            transform-origin: top;
+        }
+
+        li:nth-child(3) {
+            transform: rotateX(90deg);
+            transform-origin: top;
+        }
+
+        li:nth-child(4) {
+            transform: rotateY(90deg);
+            transform-origin: left;
+        }
+
+        li:nth-child(5) {
+            transform: rotateY(90deg);
+            transform-origin: top;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        css3  transition  animation  (@keyframs)
+              transform   translate  rotate  skew  scale
+              prespective:2000px
+              transform-style:preserve-3d
+
+        H5    header  footer  main  nav  section  article
+              input  做了增强  color data
+              
+     -->
+     <div id="box">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+     </div>
+</body>
+</html>

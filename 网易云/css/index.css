@@ -3,9 +3,6 @@
     padding: 0;
     list-style: none;
 }
-#top_box{
-    /* height: 105px;   */
-}
 /* 头一 */
 .a_box{
     width: 100%;
@@ -201,6 +198,34 @@
 #down_box{
     width: 984px;
     height: 1734.4px;
-    background: #333;
     margin: auto;
+    border: 1px solid #d3d3d3;
+    border-top:none ;
+}
+.bigBox{
+    width: 729px;
+    height: 1734.4px;
+    float: left;
+}
+.litBox{
+    width: 254px;
+    height: 1734.4px;
+    border-left: 1px solid #d3d3d3;
+    float: right;
+}
+
+.bigBox .fsbox{
+    width: 689px;
+    height: 523px;
+    margin: 20px 20px 40px 20px;
+}
+.bigBox .fsbox .dhbox{
+    width: 689px;
+    height: 50px;
+}
+.fsbox .dhbox .logo1 a{
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: url(https://s2.music.126.net/style/web2/img/index/index.png?50945945667957946284bffeb02f25b8)no-repeat  0 9999px;
 }

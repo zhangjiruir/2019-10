@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // rem  淘宝网flexible.js   针对设计稿1rem = 100px
+    // rem是根据html的font-size属性决定的 假设html的font-size是20px，1rem = 20px
+    // 淘宝引入js 设计稿是640px 假设从设计稿上量出的一个宽度是100px的盒子 那么我们应该设置成 
+    // 100/640*10 = 100/64rem
+
+    function fn(){
+        let w = document.documentElement.clientWidth || document.body.clientWidth;
+        let x = w/750*100;// 750是设计稿的宽度  100 因为我们 要 1rem  100px
+        document.documentElement.style.fontSize = x + 'px'
+    }
+
+    // vw  1vw = 宽度的100分之一
+    // 假设设计稿是750px   量出100px   那么 我们设置多少 vw  100/750 * 100
+
+    // @media  all  and（max-width：300px）{
+        // 媒体查询
+    // }
+
+
+</script>
