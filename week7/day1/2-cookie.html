@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    /*
+        种植 cookie
+        cookie  是前端用来保存某些数据的；前后端都能操作
+                一般用来存储用户信息 5k 左右
+
+        H5 新增的两个前端存储数据的 API  大小是在5m（兆）左右
+            这两个API只能由前端操作
+        localStorage
+            getItem(属性名)    setItem(属性名，属性值)  removeItem（属性名）
+            clear() // 全部清除
+        sessionStorage
+
+        // localStroage 和 sessionStorage  的唯一区别 就是 local不会自动清除
+        // session 会关闭的时候清空
+
+        getCookie(属性名)  对应的属性值
+        setCookie(属性名,属性值，过期日期)// 把日期设置成过期的日子
+        removeCookie(属性名)
+
+        cookie: 1.前后端都能设置  2.大小只有5k  3.设置cookie只能自己编写方法  4.有过期时间 5.随着请求发送给后台
+        sessionStorage： 1.只能前端设置 2.大小5兆 3.有现成的方法  4.后端无法操作该属性 5.没有过期时间
+    */
+    function getCookie(key){
+        let str = document.cookie;
+        str += '; ';//让最后一个可以满足正则
+        let reg = new RegExp(`${key}=([^; ]+); `);
+        return str.match(reg) ? str.match(reg)[1] : null;
+    }
+    
+    function getCookie(key,value,date){
+        if(date){
+            document.cookie = `${key} = ${value}; expires=${new Date(date)}`
+        }else{
+            document.cookie = `${key} = ${value};`
+        }
+        
+    }
+
+    function removeCookie(key,domain){
+        if(doamin){
+            document.cookie = `${key} = null; domain=${domain}; expires=${new Date(1970)};`
+        }else{
+            document.cookie = `${key} = null; expires=${new Date(1970)};`
+        }
+        
+    }
+</script>
