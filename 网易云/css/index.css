@@ -240,11 +240,70 @@
 .fsbox .dhbox .wzbox{
     font-size: 16px;
     position: absolute;
-    left: 40px;
+    left: 30px;
     top: 5px;
 }
 .fsbox .dhbox .wzbox a{
     margin-left: 20px;
     color: #242424;
     text-decoration-line: none;
+}
+.fsbox .wjbox {
+    margin: 20px 0 0 -42px;
+    position: relative;
+}
+.fsbox .wjbox li{
+    width: 140px;
+    height: 204px;
+    padding-left: 42px;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0 0 30px 38px;
+    line-height: 1.4;
+}
+.fsbox .wjbox .aaa{
+    width: 140px;
+    height: 38.4px;
+    max-width: 100%;
+    color: #000;
+    cursor: pointer;
+    font-size: 14px;
+    list-style: none;
+}
+.fsbox .wjbox .bottom{
+    position: absolute;
+    bottom: 95px;
+    width: 100%;
+    height: 27px;
+    background: url(https://s2.music.126.net/style/web2/img/coverall.png?20e868c8b0cb66a0476abf7ec33a1567) no-repeat  
+}
+.fsbox .wjbox div span{
+    position: absolute;
+    bottom: 3px;
+    left: 30px;
+}
+.fsbox .wjbox .icon-headset{
+    background: url(https://s2.music.126.net/style/web2/img/iconall.png?caaa0906eb8eda6839e752b7ca077e73) no-repeat;
+    width: 14px;
+    height: 11px;
+    background-position: 0 -24px;
+    margin: 9px 5px 5px 10px;
+    left: 0;
+    color: #000;
+}
+.fsbox .wjbox div .icon-play{
+    position: absolute;
+    left: 120px;
+    bottom: 5px;
+    width: 16px;
+    height: 17px;
+    background: url(https://s2.music.126.net/style/web2/img/iconall.png?caaa0906eb8eda6839e752b7ca077e73) no-repeat;
+}
+
+
+/* 右部个人主页 */
+#down_box .litBox .headbox{
+    width: 100%;
+    height: 180px;
+    background: #6666662e;
 }
