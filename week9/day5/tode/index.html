@@ -103,10 +103,10 @@
         TODO-LIST
     </nav>
     <div class="content">
-        <h2>亲~ 你还有10件事要完成</h2>
+        <h2>亲~ 你还有{{count}}件事要完成</h2>
         <input type="text" class="inp" v-model='todo' @keyup.enter='submit'>
         <ul class="todo_list">
-            <li v-for='(item,index) in ary' :key='item.id' @dblclick.prevent='change(item)'>
+            <li v-for='(item,index) in todoAry' :key='item.id' @dblclick.prevent='change(item)'>
                 <span :class="{text_del:item.done}" v-if='!item.editable'>
                     <input type="checkbox" v-model='item.done'>
                     {{item.todo}}
