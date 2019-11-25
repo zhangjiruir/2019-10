@@ -78,7 +78,7 @@
         .drop-enter-to,.drop-leave{
             transform: translateY(100px)
         }
-        .drop-enter-active,.drop-leave-to{
+        .drop-enter-active,.drop-leave-active{
             transition: all 0.2s;
         }
     </style>
@@ -89,7 +89,20 @@
     <div id="app">
         <h1>{{name}}</h1>
         <my-button text='点击展示弹框' @click='showFn'></my-button>
-        <my-dialog :visible='isShow' @sure='sureFn'  @cancel='cancelFn' title="警告" content='请问是否删除'></my-dialog>
+        <my-dialog :visible='isShow'>
+            <header slot='toubu'>
+                <span>hello</span>
+                <i>world</i>
+            </header>
+            <main slot='shenti'>
+                <h1>自己的内容</h1>
+                <h2>哈哈啥</h2>
+            </main>
+            <footer slot='weibu'>
+                <my-button @click='sureFn' text='取消'></my-button>
+                <my-button @click='cancelFn' text='确定'></my-button>
+            </footer>
+        </my-dialog>  
     </div>
 </body>
 
@@ -100,12 +113,17 @@
         <div class='dialogBox' v-show='visible'>
             <transition name='drop'>
                 <div class="contentBox" v-show='visible'>
-                    <header>{{title}}</header>
-                    <main>{{content}}</main>
-                    <footer>
-                        <my-button @click='$emit("cancel")' text='取消'></my-button>
-                        <my-button @click='$emit("sure")'text='确定'></my-button>
-                    </footer>
+                    <slot name='toubu'>
+                        <header>默认头部</header>
+                    </slot>
+                    <slot name='shenti'>
+                        <main>默认的身体</main>
+                    </slot>
+                    <slot name='weibu'>
+                        <footer>
+                            默认的尾部
+                        </footer>
+                    </slot>
                 </div>
             </transition>
         </div>
@@ -121,7 +139,7 @@
 <script>
     Vue.component('my-dialog', {
         template: '#myDialog',
-        props: ['visible','title','content']
+        props: ['visible']
     })
     Vue.component('my-button', {
         template: "#myButton",

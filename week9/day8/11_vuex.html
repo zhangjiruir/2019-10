@@ -19,8 +19,8 @@
 <template id='btn'>
     <div>
         <button @click='$store.commit("add")'>+</button>
-        <button  @click='$store.commit("minus")'>-</button>
-        {{$store.state.count}}
+        <button @click='$store.commit("minus")'>-</button>
+        <h2>{{$store.state.count}}</h2>
     </div>
 </template>
 
@@ -35,24 +35,23 @@
 <script>
     Vue.component('btn',{
         template:'#btn',
-        created(){
+        created() {
             console.log(this)
-        }
+        },
     })
     Vue.component('show',{
         template:'#show',
-        created(){
+        created() {
             console.log(this)
-        }
+        },
     })
-    
     let store = new Vuex.Store({
         state:{
             count:100
         },
         mutations:{
             add(qqq){
-                // qqq就是上面的state
+                // qqq就是上边的state;
                 qqq.count++
             },
             minus(state){

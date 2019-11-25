@@ -14,7 +14,6 @@
         <my-head :level='1'>
             hello world
         </my-head>
-
         <my-head2 :level='2'>
             hello world2
         </my-head2>
@@ -52,7 +51,7 @@
     })
     Vue.component('my-head2',{
         render:function(h){
-            // h $createElement
+            // h  $createElement
             console.log(this)
             return h('h'+this.level,null,this.$slots.default)
         },

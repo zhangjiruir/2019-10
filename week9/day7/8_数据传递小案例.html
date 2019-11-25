@@ -22,7 +22,7 @@
     <div style='float: left;'>
         <h2>成年人列表</h2>
         <ul>
-            <li v-for='item in list' :key='item.id'>姓名{{item.name}};年龄{{item.age}} <button @click='del(item)'>x</button></li>
+            <li v-for='item in list' :key='item.id'>姓名{{item.name}}；年龄{{item.age}} <button @click='del(item)'>X</button></li>
         </ul>
     </div>
 </template>
@@ -30,7 +30,7 @@
     <div style='float: right;'>
         <h2>未成年人列表</h2>
         <ul>
-            <li v-for='item in list' :key='item.id'>姓名{{item.name}};年龄{{item.age}} <button @click='del(item)'>x</button></li>
+            <li v-for='item in list' :key='item.id'>姓名{{item.name}}；年龄{{item.age}} <button @click='del(item)'>X</button></li>
         </ul>
     </div>
 </template>
@@ -40,7 +40,7 @@
         template:'#man',
         props:['list'],
         methods: {
-            del(item) {
+            del(item){
                 this.$emit('change',item)
             }
         },
@@ -49,7 +49,7 @@
         template:'#boy',
         props:['list'],
         methods: {
-            del(item) {
+            del(item){
                 this.$emit('change',item)
             }
         },
@@ -64,16 +64,16 @@
         components:{
             man,boy
         },
-        computed:{
+        computed: {
             manList(){
                 return this.ary.filter(item=>item.age>=18)
             },
             boyList(){
                 return this.ary.filter(item=>item.age<18)
-            },
+            }
         },
         methods: {
-            submit() {
+            submit(){
                 let obj = {
                     name:this.name,
                     age:this.age,

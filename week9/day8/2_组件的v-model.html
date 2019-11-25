@@ -21,22 +21,30 @@
             padding-left: 20px;
         }
         .inpBox input:focus{
-            border-color: rgb(115,174,235);
+            border-color: rgb(31, 109, 112);
         }
     </style>
 </head>
 <body>
     <div id="app">
         <h1>{{name}}</h1>
-        <my-input v-model='name' placeholder="请输入内容"></my-input>
-        <!-- <my-input :v-model='name' @input='(val)=>name=val' placeholder="请输入内容"></my-input> -->
+        <my-input 
+            placeholder='请输入内容'
+            v-model='name'
+        ></my-input>
+        <!-- v-model=name   :value='name'  @input=(val)=>name=val -->
     </div>
 </body>
 </html>
 
-<template id="myInput">
-    <div class="inpBox">
-        <input type="text" :placeholder='placeholder' :value='value' @input='$emit("input",$event.target.value)'>
+<template id='myInput'>
+    <div class='inpBox'>
+        <input 
+            type="text"
+            :placeholder='placeholder'
+            :value='value'
+            @input='handleInput' 
+            >
     </div>
 </template>
 
@@ -44,12 +52,18 @@
 <script>
     Vue.component('my-input',{
         template:'#myInput',
-        props:['placeholder','value']
+        props:['placeholder','value'],
+        methods: {
+            handleInput(e){
+                let value = e.target.value;
+                this.$emit('input',value)
+            }
+        },
     })
     let vm = new Vue({
         el:'#app',
         data:{
-            name:"珠峰"
+            name:""
         }
-    })
+    });
 </script>
