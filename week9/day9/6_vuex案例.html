@@ -15,8 +15,9 @@
 </html>
 <template id='myBtn'>
     <div>
+        <h1>{{count}}</h1>
         <h2>{{name}}</h2>
-        <input type="text">
+        <input type="text" v-model='name'>
     </div>
 </template>
 <script src="../node_modules/vuex/dist/vuex.js"></script>
@@ -25,12 +26,15 @@
     let store = new Vuex.Store({
         state:{
             // 存放公用数据的地方
-            name:"珠峰"
+            name:"珠峰",
+            count:100
         },
         mutations:{
             // 存储的都是用来改变 state中的状态  的方法
             // 我们需要通过 $store.commit这个方法来触发对应的函数；
-            
+            changeName(state,option){
+                state.name = option.qqq
+            }
         }
     })
     Vue.component('my-btn',{
@@ -40,12 +44,25 @@
                
             }
         },
-        computed:{
-            // count(){
-            //     return this.$store.state.count
-            // }
-            ...Vuex.mapState(['count'])
-        }
+        computed: {
+            /* count(){
+                return this.$store.state.count
+            } */
+            ...Vuex.mapState(['count']),
+            /* name(){
+                return this.$store.state.name
+            } */
+            name:{
+                get(){
+                    return this.$store.state.name
+                },
+                set(newVal){
+                    // this.$store.state.name = newVal;
+                    this.$store.commit('changeName',{qqq:newVal})
+                }
+            }
+
+        },
     })
     let vm = new Vue({
         el:'#app',
@@ -53,9 +70,11 @@
         data:{
            
         },
-        computed:{
-           
-            ...Vuex.mapState(['name'])
-        }
+        computed: {
+            // ...Vuex.mapState(['name'])
+            ...Vuex.mapState({
+                name:state=>state.name + "培训"
+            })
+        },
     });
 </script>

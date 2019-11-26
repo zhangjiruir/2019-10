@@ -15,42 +15,42 @@
 </html>
 <script src="../node_modules/vue/dist/vue.js"></script>
 <script>
-    // 把混入对象 中的data 合并到每一个组件的data中,若属性名重复 则以组件中data的属性为准
-    // 把混入对象 中的所有的钩子函数 添加到每一个组件 并且都是先执行的混入对象的钩子函数，再去执行组件对应钩子函数
-    // Vue.mixin({
-    //     data(){
-    //         return {
-    //             qqq:123,
-    //             name:234568
-    //         }
-    //     },
-    //     beforeCreate(){
-    //         console.log('mixin beforeCreate')
-    //     },
-    //     mounted(){
-    //         console.log('mixin monted')
-    //     }
-    // })
+    // 把混入 对象 中的data 合并到每一个组件的data中，若属性名重复 则以组件中data的属性为准
+    // 把混入 对象 中的所有的钩子函数 添加到每一个组件，并且 都是先执行的混入对象的钩子函数，再去执行组件对应钩子函数
+    Vue.mixin({
+        data() {
+            return {
+                qqq:123,
+                name:1234456
+            }
+        },
+        beforeCreate() {
+            console.log('mixin beforeCreate')
+        },
+        mounted() {
+            console.log('mixin monted')
+        },
+    })
 
 
     Vue.component('my',{
         render(h){
             return h('h2',{class:'qqq'},'hello')
         },
-        beforeCreate(){
+        beforeCreate() {
             console.log(' my beforeCreate')
         },
-        mounted(){
+        mounted() {
             console.log('my monted')
-        }
+        },
     })
     let vm = new Vue({
         el:'#app',
         data:{
             name:"珠峰"
         },
-        beforeCreate(){
+        beforeCreate() {
             console.log('vm beforeCreate')
-        }
-    })
+        },
+    });
 </script>
